@@ -6,6 +6,7 @@
 - (void)checkAvailability:(CDVInvokedUrlCommand*)command
 {
     BOOL result = ([[UIScreen screens] count] > 1);
+    if (!result) self.externalWebView = nil;
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
